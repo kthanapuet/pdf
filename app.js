@@ -12,7 +12,7 @@ app.post('/PostNotification', (req, res) => {
 });
 
 // Default IP control with a whitelist
-app.get('/', (req, res) => {
+app.get('/start', (req, res) => {
     res.send("Hello Nodejs App.");
 })
 
