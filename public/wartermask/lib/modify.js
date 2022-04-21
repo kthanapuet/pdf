@@ -1,16 +1,17 @@
 const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
 
+
 async function modifyPdf(impUrl) {
   // Search URL parameter
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
   var url = urlParams.get('url')
-  if(!url){
+  if (!url) {
     url = impUrl
   }
   // Fetch an existing PDF document
   // const url = impUrl
-	const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
+  const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
 
   // Load a PDFDocument from the existing PDF bytes
   const pdfDoc = await PDFDocument.load(existingPdfBytes)
@@ -27,12 +28,12 @@ async function modifyPdf(impUrl) {
 
   // Draw a string of text diagonally across the first page
   firstPage.drawText('Thanapuet Test Warter Mask!', {
-	x: 5,
-	y: height / 2 + 300,
-	size: 50,
-	font: helveticaFont,
-	color: rgb(0.95, 0.1, 0.1),
-	rotate: degrees(-45),
+    x: 5,
+    y: height / 2 + 300,
+    size: 50,
+    font: helveticaFont,
+    color: rgb(0.95, 0.1, 0.1),
+    rotate: degrees(-45),
   })
 
   // Serialize the PDFDocument to bytes (a Uint8Array)
