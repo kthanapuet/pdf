@@ -1,8 +1,15 @@
 const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
 
 async function modifyPdf(impUrl) {
+  // Search URL parameter
+  const queryString = window.location.search
+  const urlParams = new URLSearchParams(queryString)
+  var url = urlParams.get('url')
+  if(!url){
+    url = impUrl
+  }
   // Fetch an existing PDF document
-  const url = impUrl
+  // const url = impUrl
 	const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
 
   // Load a PDFDocument from the existing PDF bytes
