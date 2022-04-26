@@ -8,8 +8,9 @@ router.get('/', function(req, res, next) {
   res.send("PDF Library");
 });
 
-router.get('/waterMask', (req, res) => {
-  res.download(pdf.modifyPdf())
+router.get('/waterMask', (req, res, next) => {
+  res.send('/waterMask');
+  // res.download(pdf.modifyPdf())
 })
 
 module.exports = router;
