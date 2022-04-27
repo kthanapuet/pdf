@@ -8,9 +8,13 @@ router.get('/', function(req, res, next) {
   res.send("PDF Library");
 });
 
-router.get('/waterMask', (req, res, next) => {
-  res.send('/waterMask');
-  // res.download(pdf.modifyPdf())
-})
+var stream = require('stream');
+const res = require('express/lib/response');
+//...
+router.get('/download', async function(req, res){
+  var pdfBuffer = await pdf.modifyPdf();
+  res.setHeader("Content-Type", "text/pdf");
+  // res.download(pdfBuffer, "test.pdf");
+});
 
 module.exports = router;
